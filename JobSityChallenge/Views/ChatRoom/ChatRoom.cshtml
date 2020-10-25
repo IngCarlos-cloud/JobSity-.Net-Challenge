@@ -1,0 +1,30 @@
+﻿@model JobSityChallenge.Models.ChatRoomModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChatRoom</title>
+</head>
+<body>
+    <form method="post" action="/ChatRoom/postMessage">
+        <div>
+            @foreach (var message in ViewData["messageList"] as List<JobSityChallenge.Models.ChatRoomModel.Messages>)
+            {
+                <label> @message.UserName  wrote: @message.Message at: @message.CreateDate </label>
+                <br />
+            }
+        </div>
+
+        <div>
+            <input type="text" name="Message" id="Message" />
+            <input type="submit" />
+        </div>
+    </form>
+</body>
+</html>

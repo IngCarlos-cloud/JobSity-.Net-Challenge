@@ -1,0 +1,30 @@
+﻿@model JobSityChallenge.Models.Login.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form method="post" action="/Login/SignIn">
+        <div>
+            <p>
+                <label for="UserName">UserName</label>
+                <input type="text" name="UserName"id="UserName" />
+                <br />
+                <br />
+                <label for="Pwd">Password:</label>
+                <input type="password" name="Pwd" id="Pwd" maxlength="10" />                
+                <br />
+                <br />
+                <input type="submit" />
+        </div>
+    </form>
+</body>
+</html>
