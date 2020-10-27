@@ -1,4 +1,4 @@
-﻿@model JobSityChallenge.Models.ChatRoomModel
+﻿@model JobSityChallenge.Models.ChatRoomModel.Messages
 
 @{
     Layout = null;
@@ -12,7 +12,7 @@
     <title>ChatRoom</title>
 </head>
 <body>
-    <form method="post" action="/ChatRoom/postMessage">
+    <form method="post" action="/ChatRoom/ChatRoom">
         <div>
             @foreach (var message in ViewData["messageList"] as List<JobSityChallenge.Models.ChatRoomModel.Messages>)
             {
@@ -22,7 +22,8 @@
         </div>
 
         <div>
-            <input type="text" name="Message" id="Message" />
+            @Html.TextBoxFor(m => m.Message)
+            
             <input type="submit" />
         </div>
     </form>
