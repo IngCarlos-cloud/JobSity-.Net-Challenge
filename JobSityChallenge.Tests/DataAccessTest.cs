@@ -33,6 +33,16 @@ namespace JobSityChallenge.Tests
             Assert.IsNotNull(valid);
 
         }
+
+        [TestMethod]
+        public void InserUser()
+        {
+            User usr = new User();
+            usr.UserName = "New";
+            usr.Password = "challenge2";
+            usr.CreateUser();
+        }
+
         [TestMethod]
         public void InsertMessage()
         {
@@ -44,14 +54,14 @@ namespace JobSityChallenge.Tests
             
         }
 
-        //[TestMethod]
-        //public void RetrieveMessage()
-        //{
-        //    chat chat = new chat();
+        [TestMethod]
+        public void RetrieveMessage()
+        {
+            Chat chat = new Chat();
 
-        //    string msgs = chat.RetriveMessages();
+            DataSet ds = chat.RetrieveMessages();
 
-        //    Assert.IsTrue(!String.IsNullOrEmpty(msgs));
-        //}
+            Assert.IsTrue(ds?.Tables[0]?.Rows.Count>0);
+        }
     }
 }

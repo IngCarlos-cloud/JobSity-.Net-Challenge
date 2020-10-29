@@ -65,8 +65,13 @@
     <Build Include="Tables\chatMessage.sql" />
     <Build Include="StoredProcs\InsertMessage.sql" />
     <Build Include="StoredProcs\RetrieveMessages.sql" />
+    <Build Include="Login1.sql" />
+    <Build Include="StoredProcs\InsertUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="JobSityDb.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>

@@ -36,10 +36,29 @@ namespace JobSityChallenge.DataAccess
 
                 return validUser;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return validUser;
             }
+        }
+
+        public bool CreateUser()
+        {
+            
+            try
+            {
+                List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter(){ ParameterName="@userName",Value=UserName},
+                new SqlParameter(){ ParameterName="@userPwd",Value=Password}
+            };
+                UserId = sqlHelper.ExecuteEscalar("InsertUser", parameters);
+                bool userCreated = UserId > 0;
+                return userCreated;
+            }
+            catch (Exception e)
+            {                
+            }return false;
         }
     }
 }

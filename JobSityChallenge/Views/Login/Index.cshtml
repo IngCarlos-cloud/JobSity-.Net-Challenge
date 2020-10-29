@@ -16,15 +16,23 @@
         <div>
             <p>
                 <label for="UserName">UserName</label>
-                <input type="text" name="UserName"id="UserName" />
+                @Html.TextBoxFor(x => x.UserName)
+                @Html.ValidationMessageFor(x=>x.UserName,"","User name can not be empty" )
                 <br />
                 <br />
                 <label for="Pwd">Password:</label>
-                <input type="password" name="Pwd" id="Pwd" maxlength="10" />                
+                @Html.PasswordFor(x => x.Pwd)
+                @Html.ValidationMessageFor(x=>x.Pwd,"","Password can not be empty")
                 <br />
                 <br />
-                <input type="submit" />
+                <input type="submit" value="LogIn" />
         </div>
     </form>
+    <br />
+    <br />
+
+   
+    
+
 </body>
 </html>

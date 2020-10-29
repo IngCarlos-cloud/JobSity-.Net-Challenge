@@ -1,0 +1,38 @@
+﻿@model JobSityChallenge.Models.Login.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+           <h4>Create new Account</h4>
+        <div class="form-horizontal">
+        <form method="post" action="/Login/Register">
+            <div>
+                <p>
+                    <label for="Pwd">User Name:</label>
+                    @Html.TextBoxFor(x => x.UserName)
+                    @Html.ValidationMessageFor(x => x.UserName, "", "User name can not be empty")
+                    <br />
+                    <br />
+                    <label for="Pwd">Password:</label>
+                    @Html.PasswordFor(x => x.Pwd)
+                    @Html.ValidationMessageFor(x => x.Pwd, "", "Password can not be empty")
+                    <br />
+                    <br />
+                    <input type="submit" value="Create a new account" />
+</div>
+        </form>
+
+    </div>
+    
+    
+</body>
+</html>

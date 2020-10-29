@@ -16,7 +16,7 @@ namespace JobSityChallenge.DataAccess
         {
             try
             {
-                string cnnString = BuildConnectionString();
+                string cnnString =  BuildConnectionString();
                 SqlConnection connection = new SqlConnection(cnnString);
                 connection.Open();
                 return connection;
@@ -85,6 +85,26 @@ namespace JobSityChallenge.DataAccess
 
         }
 
+        public static int ExecuteEscalar(string spName, List<SqlParameter> sqlParam)
+        {
+            SqlConnection connection = GetSqlConnection();
+            if (connection == null)
+                throw new Exception($"Unable to connect to DB");
+
+            SqlCommand command = new SqlCommand(spName);
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+
+            if (sqlParam != null)
+                command.Parameters.AddRange(sqlParam.ToArray());
+
+            var result = command.ExecuteScalar();
+
+            return int.Parse(result.ToString());
+
+
+        }
+
         private static string BuildConnectionString()
         {
             string cnnString = string.Empty;
@@ -92,7 +112,8 @@ namespace JobSityChallenge.DataAccess
             {
                 if (dbKey != null)
                 {
-                     cnnString = $"Data Source={dbKey.GetValue("Server")};Initial Catalog={dbKey.GetValue("dbName")};Integrated Security=True;Pooling=False;Connect Timeout=30";
+                    //"Data Source = (localdb)\\ProjectsV13; Initial Catalog = JobSityDb; User ID = JobSityU; Password = 'l{xqafvdkFbNpogkybYm{|s4msFT7_&#$!~<t{pqcbZMp9wk'; Integrated Security=True;Pooling=False;Connect Timeout=30";
+                    cnnString = $"Data Source={dbKey.GetValue("Server")};Initial Catalog={dbKey.GetValue("dbName")}; User ID={dbKey.GetValue("user")}; Password='{dbKey.GetValue("pwd")}'; Integrated Security=True;Pooling=False;Connect Timeout=30";
                     
                 }
                     

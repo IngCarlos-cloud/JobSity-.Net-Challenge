@@ -38,7 +38,7 @@ namespace JobSityChallenge.DataAccess
             {
                return sqlHelper.ExecuteDataSet("RetrieveMessages",null);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return null;
             }
